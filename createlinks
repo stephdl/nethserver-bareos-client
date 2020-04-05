@@ -1,0 +1,13 @@
+#!/usr/bin/perl -w
+
+use esmith::Build::CreateLinks qw(:all);
+
+my $event = 'nethserver-bareos-client-update';
+
+event_actions($event, qw(
+             initialize-default-databases 00
+));
+
+event_services($event, qw(
+               bareos-fd  restart
+));
